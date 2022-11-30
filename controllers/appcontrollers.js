@@ -1,21 +1,38 @@
+const TodoModel = require('../Models/todoModel');
+exports.createTodo = async(req,res) => {
+    try {
+        const {title, isImportant, tasks} = req.body;
+        
+        const todo = await TodoModel.create({
+            title,isImportant,tasks
+        });
+        res.status(200).json({
+            "message":"success",
+            todo
+        });
 
-exports.createTodo = () => {
+    } catch (err) {
+        console.log(err.message)
+        res.status(400).json({
+            "message":"failure",
+            "error":err.message
+        })
+    } 
+}
+
+exports.updateTodo = (req,res) => {
 
 }
 
-exports.updateTodo = () => {
+exports.deleteTodo = (req,res) => {
 
 }
 
-exports.deleteTodo = () => {
+exports.getTodos = (req,res) => {
 
 }
 
-exports.getTodos = () => {
-
-}
-
-exports.searchTodos = () => {
+exports.searchTodos = (req,res) => {
 
 }
 
