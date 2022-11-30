@@ -12,7 +12,6 @@ exports.createTodo = async(req,res) => {
         });
 
     } catch (err) {
-        console.log(err.message)
         res.status(400).json({
             "message":"failure",
             "error":err.message
@@ -20,19 +19,33 @@ exports.createTodo = async(req,res) => {
     } 
 }
 
-exports.updateTodo = (req,res) => {
+// exports.updateTodo = (req,res) => {
+  
+    
+// }
 
+// exports.deleteTodo = (req,res) => {
+    
+// }
+
+exports.getTodos = async (req,res) => {
+
+    try {
+        const alltodos = await TodoModel.find(); // db operations
+        res.status(200).json({
+            "message":"success",
+            alltodos
+        });
+        
+    } catch (err) {
+        res.status(400).json({
+            "message":"failure",
+            "error":err.message
+        }) 
+    }
 }
 
-exports.deleteTodo = (req,res) => {
-
-}
-
-exports.getTodos = (req,res) => {
-
-}
-
-exports.searchTodos = (req,res) => {
-
-}
+// exports.searchTodos = (req,res) => {
+//     console.log("hello");
+// }
 
