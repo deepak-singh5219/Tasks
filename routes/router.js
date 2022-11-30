@@ -4,8 +4,8 @@ const {createTodo, getTodos, updateTodo, deleteTodo, searchTodo} = require('../c
 
 router.get('/todo/getTodos', getTodos);
 router.post('/todo/createTodo', createTodo);
-router.put('/todo/createTodo', updateTodo);
-router.delete('/todo/createTodo', deleteTodo);
-router.get('/todo/createTodo', searchTodo);
+router.put('/todo/updateTodo/:id', updateTodo);
+router.delete('/todo/deleteTodo/:id', deleteTodo);
+// router.get('/todo/searchTodo', searchTodo);
 
 module.exports = router;
