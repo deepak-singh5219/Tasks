@@ -1,4 +1,4 @@
-const { findByIdAndDelete } = require('../Models/todoModel');
+
 const TodoModel = require('../Models/todoModel');
 exports.createTodo = async(req,res) => {
     try {
@@ -72,7 +72,30 @@ exports.getTodos = async (req,res) => {
     }
 }
 
-// exports.searchTodos = (req,res) => {
-//     console.log("hello");
-// }
+exports.searchTodos = async(req,res) => {
+
+    try {
+
+    const {searchString} = req.query;
+    console.log(typeof searchString);
+ 
+    // console.log(TodoModel.getIndexes());
+    // if(typeof search != "search") throw new Error("search value should be a string");
+    // await TodoModel.index({ name: "text", description: "text" });
+    const results = await TodoModel.find({$text:{ $search:'tuesday'}});
+    
+
+    res.status(200).json({
+      "message":"success",
+       results
+    });
+ 
+    } catch (error) {
+        res.status(400).json({
+            "message":"failure",
+            "error":error.message
+        })
+        
+    }
+}
 
