@@ -19,4 +19,5 @@ const todoSchema = new mongoose.Schema(
 }
 )
 
+todoSchema.index({'$**': 'text'});
 module.exports = mongoose.model("todo",todoSchema);
