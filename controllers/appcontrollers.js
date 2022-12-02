@@ -76,13 +76,8 @@ exports.searchTodos = async(req,res) => {
 
     try {
 
-    const {searchString} = req.query;
-    console.log(typeof searchString);
- 
-    // console.log(TodoModel.getIndexes());
-    // if(typeof search != "search") throw new Error("search value should be a string");
-    // await TodoModel.index({ name: "text", description: "text" });
-    const results = await TodoModel.find({$text:{ $search:'tuesday'}});
+    const {search} = req.query;
+    const results = await TodoModel.find({$text:{ $search:search}});
     
 
     res.status(200).json({
